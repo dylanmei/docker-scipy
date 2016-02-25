@@ -33,11 +33,11 @@ RUN set -ex \
    -Ppyspark \
    -pl '!hbase,!hive,!tachyon,!cassandra,!ignite,!flink,!tajo,!lens,!kylin,!phoenix' \
  && tar xvf /usr/src/zeppelin/zeppelin-distribution/target/zeppelin*.tar.gz -C /usr/ \
- && mv /usr/zeppelin* /usr/zeppelin \
+ && mv /usr/zeppelin* $ZEPPELIN_HOME \
  && rm -rf /usr/src/zeppelin \
  && rm -rf /root/.m2 \
  && rm -rf /root/.npm \
  && rm -rf /tmp/*
 
-WORKDIR /usr/zeppelin
+WORKDIR $ZEPPELIN_HOME
 CMD ["bin/zeppelin.sh"]
